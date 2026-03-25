@@ -13,7 +13,6 @@
     "@heroicons/vue": "^2.2.0",
     "@nuxt/image": "2.0.0",
     "@nuxt/scripts": "0.13.2",
-    "@nuxtjs/seo": "4.0.2",
     "@nuxtjs/supabase": "2.0.4",
     "@peterbud/nuxt-query": "1.6.0",
     "@pinia/nuxt": "0.11.3",
