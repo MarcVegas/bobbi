@@ -20,14 +20,15 @@
       </div>
     </div>
 
-    <!-- Share Modal - Will be implemented later -->
-    <!-- <ShareModal v-model:open="isShareModalOpen" /> -->
+    <!-- Share Modal -->
+    <ShareModal v-model:open="isShareModalOpen" />
   </header>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
 import { ShareIcon } from '@heroicons/vue/24/outline';
+import ShareModal from './ShareModal.vue';
 
 const isShareModalOpen = ref(false);
 </script>

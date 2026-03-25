@@ -10,7 +10,6 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { MenuBadge } from '~/shared/types/menu';
 
 interface Props {
   badge: MenuBadge;

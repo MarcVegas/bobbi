@@ -1,5 +1,5 @@
 <template>
-  <footer class="bg-elegant-charcoal text-white section-padding">
+  <footer class="bg-elegant-black text-white section-padding">
     <div class="container-elegant">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
         <!-- Brand -->
@@ -69,7 +69,6 @@
 </template>
 
 <script setup lang="ts">
-import { CAFE_INFO } from '~/shared/utils/constants';
 // Import icons - you can customize these based on actual social platforms
 import {
   ChatBubbleOvalLeftEllipsisIcon as InstagramIcon,
