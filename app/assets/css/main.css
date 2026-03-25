@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --matcha-primary: 90 68% 47%;
+    --matcha-secondary: 90 38% 77%;
+    --elegant-black: 0 0% 10%;
+    --elegant-cream: 40 50% 98%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-elegant-cream text-elegant-black antialiased;
+    font-feature-settings: 'liga' 1, 'kern' 1;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+}
+
+@layer components {
+  /* Elegant button styling */
+  .btn-elegant {
+    @apply px-6 py-3 rounded-sm font-medium transition-all duration-300;
+    @apply bg-matcha-500 text-white hover:bg-matcha-600;
+    @apply shadow-elegant hover:shadow-elegant-lg;
+  }
+
+  .btn-outline-elegant {
+    @apply px-6 py-3 rounded-sm font-medium transition-all duration-300;
+    @apply border-2 border-matcha-500 text-matcha-500 hover:bg-matcha-50;
+  }
+
+  /* Card styling */
+  .card-elegant {
+    @apply bg-white rounded-lg shadow-card overflow-hidden;
+    @apply transition-all duration-300 hover:shadow-elegant-lg;
+  }
+
+  /* Section spacing */
+  .section-padding {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+
+  .container-elegant {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+@layer utilities {
+  /* Text gradients */
+  .text-gradient-matcha {
+    @apply bg-gradient-matcha bg-clip-text text-transparent;
+  }
+
+  /* Smooth scroll */
+  .smooth-scroll {
+    scroll-behavior: smooth;
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}

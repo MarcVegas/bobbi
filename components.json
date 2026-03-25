@@ -1,0 +1,15 @@
+{
+  "$schema": "https://shadcn-nuxt.com/schema.json",
+  "style": "default",
+  "typescript": true,
+  "tailwind": {
+    "config": "tailwind.config.ts",
+    "css": "app/assets/css/main.css",
+    "baseColor": "neutral"
+  },
+  "framework": "nuxt",
+  "srcDir": "./app",
+  "componentsDir": "./app/components",
+  "composablesDir": "./app/composables",
+  "utilsDir": "./app/utils"
+}
