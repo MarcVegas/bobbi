@@ -46,13 +46,17 @@ export default defineNuxtConfig({
       title: 'Bobbi Cafe - Elegant Matcha & Coffee',
       meta: [
         { name: 'description', content: 'Experience the finest matcha drinks, coffee, and pastries at Bobbi Cafe.' },
-        { name: 'theme-color', content: '#5aa84a' },
+        { name: 'theme-color', content: '#1A3A2A' },
         // Open Graph
         { property: 'og:type', content: 'website' },
-        { property: 'og:site_name', content: 'Bobbi Cafe' },
+        { property: 'og:site_name', content: 'Bobbi' },
         { property: 'og:locale', content: 'en_US' },
+        { property: 'og:image', content: 'https://bobbicafe.com/images/og_image.jpg' },
+        { property: 'og:image:width', content: '1200' },
+        { property: 'og:image:height', content: '630' },
         // Twitter
         { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:site', content: '@BobbicafeOrmoc' },
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
