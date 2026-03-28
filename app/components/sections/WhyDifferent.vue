@@ -21,9 +21,9 @@
                 <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
               </svg>
             </div>
-            <h3 class="font-bold text-lg mb-2" style="color: var(--color-text-dark);">Roasted to Perfection</h3>
+            <h3 class="font-bold text-lg mb-2" style="color: var(--color-text-dark);">Whisked to Perfection</h3>
             <p class="body-text text-sm" style="color: var(--color-text-muted);">
-              Expert roasting techniques delivering a consistently satisfying cup of coffee
+              Expert preparation techniques delivering a consistently satisfying cup of matcha
             </p>
           </div>
 
@@ -36,7 +36,7 @@
             </div>
             <h3 class="font-bold text-lg mb-2" style="color: var(--color-text-dark);">From Farm to Cup</h3>
             <p class="body-text text-sm" style="color: var(--color-text-muted);">
-              We follow each coffee bean's journey from farm to cup,
+              We follow each matcha leaf's journey from farm to cup,
               ensuring sustainable and ethical sourcing practices
             </p>
           </div>
@@ -63,10 +63,10 @@
                 <path d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/>
               </svg>
             </div>
-            <h3 class="font-bold text-lg mb-2" style="color: var(--color-text-dark);">Artisan Roasting</h3>
+            <h3 class="font-bold text-lg mb-2" style="color: var(--color-text-dark);">Artisan Preparation</h3>
             <p class="body-text text-sm" style="color: var(--color-text-muted);">
-              Our coffee machines combine state-of-the-art
-              features with elegant design
+              Our matcha bar combines state-of-the-art
+              equipment with elegant design
             </p>
           </div>
 
@@ -79,9 +79,9 @@
             </div>
             <h3 class="font-bold text-lg mb-2" style="color: var(--color-text-dark);">Commitment to Quality</h3>
             <p class="body-text text-sm" style="color: var(--color-text-muted);">
-              We promise to source, deliver highest quality
-              beans every time, bringing you the authentic
-              original flavor of specialty
+              We promise to source and deliver highest quality
+              matcha every time, bringing you the authentic
+              original flavor and health benefits
             </p>
           </div>
         </div>

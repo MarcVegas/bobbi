@@ -34,25 +34,25 @@
 
           <!-- Headline -->
           <h2 class="section-title" style="color: var(--color-text-dark);">
-            Discover The Best Quality Beans And Ambience
+            Discover The Best Quality Matcha And Ambience
           </h2>
 
           <!-- Body Text -->
           <p class="body-text" style="color: var(--color-text-muted);">
-            We pride ourself on providing top-notch coffee beans from exceptional farms
-            handpicked by our expert sourcing team. Enjoy premium coffee that satisfies both your taste buds and your senses.
+            We pride ourselves on providing top-notch matcha from exceptional sources
+            handpicked by our expert sourcing team. Enjoy premium matcha that satisfies both your taste buds and your senses.
           </p>
 
           <p class="body-text" style="color: var(--color-text-muted);">
-            Our premium beans are carefully selected from the finest farms, ensuring top-quality which favor coffee,
-            while immersing them in a perfect, stylish atmosphere the fosters relaxation and connection with others.
+            Our premium matcha is carefully selected from the finest sources, ensuring top-quality which favor health and wellness,
+            while immersing you in a perfect, stylish atmosphere that fosters relaxation and connection with others.
           </p>
 
           <!-- CTA Button -->
           <div class="pt-4">
-            <button class="btn-outline">
-              Explore Our Product
-            </button>
+            <a href="#menu" class="btn-outline">
+              Explore Our Menu
+            </a>
           </div>
         </div>
       </div>

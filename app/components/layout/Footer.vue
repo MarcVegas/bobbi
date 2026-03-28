@@ -4,16 +4,15 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
         <!-- Brand -->
         <div>
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-10 h-10 rounded-full flex items-center justify-center" style="background: var(--color-accent);">
-              <svg class="w-6 h-6" style="color: var(--color-text-dark);" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M2 21h8v-2H2v2zm2-10h4v8H4v-8zm14 0c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2s-2 .9-2 2v4c0 1.1.9 2 2 2zm-6 10h8v-2h-8v2zm2-18c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2s2-.9 2-2V5c0-1.1-.9-2-2-2z"/>
-              </svg>
-            </div>
-            <h3 class="font-bold text-2xl" style="color: var(--color-accent);">Bean Haven Café</h3>
+          <div class="mb-4">
+            <NuxtImg
+              src="/images/bobbi_text_logo.png"
+              alt="Bobbi"
+              class="h-12 w-auto"
+            />
           </div>
           <p class="text-sm leading-relaxed opacity-80">
-            Experience premium coffee from the finest beans, crafted with passion and served in a warm atmosphere.
+            Experience premium matcha from the finest sources, crafted with passion and served in a warm atmosphere.
           </p>
         </div>
 
@@ -66,7 +65,7 @@
 
       <!-- Copyright -->
       <div class="pt-8 border-t opacity-20" style="border-color: var(--color-white);">
-        <p class="text-center text-sm opacity-60">&copy; {{ new Date().getFullYear() }} Bean Haven Café. All rights reserved.</p>
+        <p class="text-center text-sm opacity-60">&copy; {{ new Date().getFullYear() }} Bobbi - Matcha Slow Bar. All rights reserved.</p>
       </div>
     </div>
   </footer>

@@ -34,11 +34,11 @@ import ProductsGrid from '~/components/sections/ProductsGrid.vue';
 
 // SEO
 useHead({
-  title: 'Bean Haven Café | Premium Coffee Experience',
+  title: 'Bobbi - Matcha Slow Bar | Coffee Nook',
   meta: [
     {
       name: 'description',
-      content: 'Discover the best coffee in your city at Bean Haven Café. Premium beans, nice ambiance, and affordable prices.',
+      content: 'Discover the best matcha in your city at Bobbi - Matcha Slow Bar. Premium ingredients, nice ambiance, and affordable prices.',
     },
   ],
 });

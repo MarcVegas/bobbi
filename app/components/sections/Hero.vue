@@ -7,11 +7,11 @@
           <!-- Headline with Yellow Underline -->
           <h1 class="hero-headline text-white mb-6">
             THE <span class="relative inline-block">
-              <span class="relative z-10">BEST COFFEE</span>
+              <span class="relative z-10">BEST MATCHA</span>
               <svg class="absolute bottom-0 left-0 w-full h-3 -mb-2" viewBox="0 0 300 12" preserveAspectRatio="none">
                 <path d="M0,6 Q75,0 150,6 T300,6" fill="none" :stroke="'var(--color-accent)'" stroke-width="8" stroke-linecap="round"/>
               </svg>
-            </span> IS HERE IN YOUR CITY
+            </span> IS HERE IN ORMOC CITY
           </h1>
 
           <!-- Description -->
@@ -36,18 +36,18 @@
           </ul>
 
           <!-- CTA Button -->
-          <button class="btn-primary text-base">
-            Explore Our Product
-          </button>
+          <a href="#menu" class="btn-primary text-base">
+            Explore Our Menu
+          </a>
         </div>
 
-        <!-- Right: Coffee Image -->
-        <div class="relative flex items-center justify-center md:justify-end">
-          <div class="relative w-full max-w-md aspect-square">
+        <!-- Right: Matcha Image -->
+        <div class="relative flex items-center justify-center md:justify-end -mr-8 md:-mr-16">
+          <div class="relative w-full max-w-2xl">
             <NuxtImg
               src="/images/hero_image_transparent.jpg"
-              alt="Premium Coffee"
-              class="w-full h-full object-contain drop-shadow-2xl"
+              alt="Premium Matcha"
+              class="w-full h-auto object-contain drop-shadow-2xl scale-125 md:scale-150"
               loading="eager"
             />
           </div>
