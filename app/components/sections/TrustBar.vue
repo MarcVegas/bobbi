@@ -10,14 +10,14 @@
         </div>
 
         <!-- Partner Logos -->
-        <div class="flex items-center gap-8 md:gap-12 flex-wrap justify-center">
+        <!-- <div class="flex items-center gap-8 md:gap-12 flex-wrap justify-center">
           <span class="font-bold text-xl tracking-wider opacity-70" style="color: var(--color-text-dark);">matcha flow</span>
           <span class="font-bold text-xl tracking-wider opacity-70" style="color: var(--color-text-dark);">GREEN TEA CO</span>
           <span class="font-bold text-xl tracking-wider opacity-70" style="color: var(--color-text-dark);">Matcha*1</span>
           <span class="font-bold text-xl tracking-wider opacity-70" style="color: var(--color-text-dark);">ZENCHA</span>
           <span class="font-bold text-xl tracking-wider opacity-70" style="color: var(--color-text-dark);">THE MATCHA HOUSE</span>
           <span class="font-bold text-xl tracking-wider opacity-70" style="color: var(--color-text-dark);">GREENLEAF</span>
-        </div>
+        </div> -->
       </div>
     </div>
   </section>

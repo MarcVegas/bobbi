@@ -16,7 +16,7 @@
 
           <!-- Description -->
           <p class="body-text text-white/90 mb-8 max-w-md">
-            Bean Haven Café - where every cup tells a premium experience. Come, savor the difference!
+            Bobbi - where every cup tells a premium experience. Come, savor the difference!
           </p>
 
           <!-- Feature List with Checkmarks -->

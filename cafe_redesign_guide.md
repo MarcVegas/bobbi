@@ -1,4 +1,4 @@
-# Bean Haven Café — Website Design Replication Guide
+# Bobbi — Website Design Replication Guide
 
 A detailed instructional breakdown of every visual, layout, and component decision in this design, so you can faithfully recreate it (or adapt it) for your own project.
 
@@ -7,7 +7,7 @@ A detailed instructional breakdown of every visual, layout, and component decisi
 ## 1. Brand Identity & Design Language
 
 ### Concept
-This is a **premium-yet-approachable** café brand. The design sits between editorial magazine and modern e-commerce — bold headlines, warm photography, and a structured grid that feels confident without being stiff.
+This is a **premium-yet-approachable** matcha bar and café brand. The design sits between editorial magazine and modern e-commerce — bold headlines, warm photography, and a structured grid that feels confident without being stiff.
 
 ### Tone
 - Warm, rich, slightly earthy

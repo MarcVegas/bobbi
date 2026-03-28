@@ -13,8 +13,45 @@
 
       <!-- Drinks Section -->
       <div class="mb-12">
-        <h3 class="text-2xl font-bold mb-8" style="color: var(--color-text-dark);">Matcha Drinks</h3>
-        <div class="overflow-x-auto pb-4 scrollbar-hide">
+        <div class="flex items-center justify-between mb-8">
+          <h3 class="text-2xl font-bold" style="color: var(--color-text-dark);">Matcha Drinks</h3>
+          <!-- Desktop Navigation Buttons -->
+          <div class="hidden md:flex gap-2">
+            <button
+              @click="scrollDrinks('left')"
+              class="p-2 rounded-full bg-white hover:bg-gray-100 shadow-md transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              :disabled="!canScrollDrinksLeft"
+              aria-label="Scroll drinks left"
+            >
+              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button
+              @click="scrollDrinks('right')"
+              class="p-2 rounded-full bg-white hover:bg-gray-100 shadow-md transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              :disabled="!canScrollDrinksRight"
+              aria-label="Scroll drinks right"
+            >
+              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <!-- Mobile Swipe Hint -->
+        <div class="md:hidden text-center mb-4">
+          <p class="text-sm text-gray-500 flex items-center justify-center gap-2">
+            <svg class="w-5 h-5 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+            </svg>
+            Swipe to browse
+            <svg class="w-5 h-5 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </p>
+        </div>
+        <div ref="drinksContainer" class="overflow-x-auto pb-4 scrollbar-hide scroll-smooth">
           <div class="flex gap-6 min-w-max">
             <!-- Drink 1 -->
             <div class="menu-card-large">
@@ -119,8 +156,45 @@
 
       <!-- Pastries Section -->
       <div>
-        <h3 class="text-2xl font-bold mb-8" style="color: var(--color-text-dark);">Pastries</h3>
-        <div class="overflow-x-auto pb-4 scrollbar-hide">
+        <div class="flex items-center justify-between mb-8">
+          <h3 class="text-2xl font-bold" style="color: var(--color-text-dark);">Pastries</h3>
+          <!-- Desktop Navigation Buttons -->
+          <div class="hidden md:flex gap-2">
+            <button
+              @click="scrollPastries('left')"
+              class="p-2 rounded-full bg-white hover:bg-gray-100 shadow-md transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              :disabled="!canScrollPastriesLeft"
+              aria-label="Scroll pastries left"
+            >
+              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button
+              @click="scrollPastries('right')"
+              class="p-2 rounded-full bg-white hover:bg-gray-100 shadow-md transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              :disabled="!canScrollPastriesRight"
+              aria-label="Scroll pastries right"
+            >
+              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <!-- Mobile Swipe Hint -->
+        <div class="md:hidden text-center mb-4">
+          <p class="text-sm text-gray-500 flex items-center justify-center gap-2">
+            <svg class="w-5 h-5 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+            </svg>
+            Swipe to browse
+            <svg class="w-5 h-5 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </p>
+        </div>
+        <div ref="pastriesContainer" class="overflow-x-auto pb-4 scrollbar-hide scroll-smooth">
           <div class="flex gap-6 min-w-max">
             <!-- Pastry 1 -->
             <div class="menu-card-large">
@@ -185,7 +259,81 @@
 </template>
 
 <script setup lang="ts">
-// Full menu section
+import { ref, onMounted, onUnmounted } from 'vue';
+
+const drinksContainer = ref<HTMLElement | null>(null);
+const pastriesContainer = ref<HTMLElement | null>(null);
+
+const canScrollDrinksLeft = ref(false);
+const canScrollDrinksRight = ref(false);
+const canScrollPastriesLeft = ref(false);
+const canScrollPastriesRight = ref(false);
+
+const checkScrollPositions = () => {
+  if (drinksContainer.value) {
+    const { scrollLeft, scrollWidth, clientWidth } = drinksContainer.value;
+    canScrollDrinksLeft.value = scrollLeft > 0;
+    canScrollDrinksRight.value = scrollLeft < scrollWidth - clientWidth - 10;
+  }
+
+  if (pastriesContainer.value) {
+    const { scrollLeft, scrollWidth, clientWidth } = pastriesContainer.value;
+    canScrollPastriesLeft.value = scrollLeft > 0;
+    canScrollPastriesRight.value = scrollLeft < scrollWidth - clientWidth - 10;
+  }
+};
+
+const scrollDrinks = (direction: 'left' | 'right') => {
+  if (!drinksContainer.value) return;
+  const scrollAmount = 320; // Width of one card plus gap
+  const newPosition = direction === 'left'
+    ? drinksContainer.value.scrollLeft - scrollAmount
+    : drinksContainer.value.scrollLeft + scrollAmount;
+
+  drinksContainer.value.scrollTo({
+    left: newPosition,
+    behavior: 'smooth'
+  });
+};
+
+const scrollPastries = (direction: 'left' | 'right') => {
+  if (!pastriesContainer.value) return;
+  const scrollAmount = 320; // Width of one card plus gap
+  const newPosition = direction === 'left'
+    ? pastriesContainer.value.scrollLeft - scrollAmount
+    : pastriesContainer.value.scrollLeft + scrollAmount;
+
+  pastriesContainer.value.scrollTo({
+    left: newPosition,
+    behavior: 'smooth'
+  });
+};
+
+onMounted(() => {
+  checkScrollPositions();
+
+  if (drinksContainer.value) {
+    drinksContainer.value.addEventListener('scroll', checkScrollPositions);
+  }
+
+  if (pastriesContainer.value) {
+    pastriesContainer.value.addEventListener('scroll', checkScrollPositions);
+  }
+
+  window.addEventListener('resize', checkScrollPositions);
+});
+
+onUnmounted(() => {
+  if (drinksContainer.value) {
+    drinksContainer.value.removeEventListener('scroll', checkScrollPositions);
+  }
+
+  if (pastriesContainer.value) {
+    pastriesContainer.value.removeEventListener('scroll', checkScrollPositions);
+  }
+
+  window.removeEventListener('resize', checkScrollPositions);
+});
 </script>
 
 <style scoped>
@@ -193,12 +341,19 @@
   background: transparent;
   text-align: center;
   padding: 20px;
-  transition: transform 0.2s;
+  transition: transform 0.3s ease-out;
   min-width: 280px;
+  will-change: transform;
 }
 
 .menu-card-large:hover {
   transform: translateY(-8px);
+}
+
+@media (max-width: 768px) {
+  .menu-card-large:active {
+    transform: scale(0.98);
+  }
 }
 
 .bg-oval-large {

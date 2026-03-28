@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  /* Bean Haven Color Palette */
+  /* Bobbi Color Palette */
   --color-primary: #1A3A2A;
   --color-accent: #F5C518;
   --color-cream: #F5EDD6;
@@ -341,6 +341,11 @@
   }
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
+  }
+
+  /* Smooth scroll */
+  .scroll-smooth {
+    scroll-behavior: smooth;
   }
 
   /* Animation utilities */
