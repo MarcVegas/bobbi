@@ -1,32 +1,28 @@
 @import "tailwindcss";
 
 @theme {
-  /* Matcha color scale */
-  --color-matcha-50: oklch(98% 0.02 145);
-  --color-matcha-100: oklch(95% 0.04 145);
-  --color-matcha-200: oklch(88% 0.08 145);
-  --color-matcha-300: oklch(78% 0.12 145);
-  --color-matcha-400: oklch(65% 0.15 145);
-  --color-matcha-500: oklch(56% 0.15 145);
-  --color-matcha-600: oklch(47% 0.12 145);
-  --color-matcha-700: oklch(38% 0.10 145);
-  --color-matcha-800: oklch(30% 0.08 145);
-  --color-matcha-900: oklch(22% 0.06 145);
-  --color-matcha-950: oklch(15% 0.04 145);
+  /* Bean Haven Color Palette */
+  --color-primary: #1A3A2A;
+  --color-accent: #F5C518;
+  --color-cream: #F5EDD6;
+  --color-surface: #F0E8D0;
+  --color-text-dark: #1A1A1A;
+  --color-text-muted: #6B6B6B;
+  --color-white: #FFFFFF;
 
-  /* Elegant color palette */
-  --color-elegant-black: oklch(15% 0 0);
-  --color-elegant-cream: oklch(98% 0.01 80);
-  --color-elegant-warmGray: oklch(96% 0.005 80);
-  --color-elegant-gold: oklch(65% 0.12 85);
+  /* Spacing System (8px base grid) */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 48px;
+  --space-xl: 80px;
+  --space-2xl: 120px;
 
   /* Shadows */
   --shadow-card: 0 1px 3px 0 rgb(0 0 0 / 0.1);
   --shadow-elegant: 0 4px 6px -1px rgb(0 0 0 / 0.1);
   --shadow-elegant-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-
-  /* Gradients */
-  --gradient-matcha: linear-gradient(135deg, var(--color-matcha-500) 0%, var(--color-matcha-300) 100%);
+  --shadow-product: 0 6px 20px rgba(0, 0, 0, 0.08);
 
   /* Animation utilities */
   --animation-heart-bounce: heartBounce 0.6s ease-in-out;
@@ -34,6 +30,8 @@
   --animation-card-swipe-right: cardSwipeRight 0.3s ease-out;
   --animation-slide-up: slideUp 0.8s ease-out;
   --animation-fade-in: fadeIn 0.6s ease-out;
+  --animation-hover-lift: hoverLift 0.2s ease-out;
+  --animation-scroll: scroll 30s linear infinite;
 }
 
 @keyframes heartBounce {
@@ -73,47 +71,119 @@
   to { opacity: 1; }
 }
 
+@keyframes hoverLift {
+  to {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 @layer base {
   body {
-    background-color: var(--color-elegant-cream);
-    color: var(--color-elegant-black);
-    @apply antialiased;
+    background-color: var(--color-white);
+    color: var(--color-text-dark);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     font-feature-settings: 'liga' 1, 'kern' 1;
+    font-family: 'DM Sans', sans-serif;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
   }
 }
 
 @layer components {
-  /* Elegant button styling */
+  /* Primary Button - Yellow */
+  .btn-primary {
+    display: inline-block;
+    background: var(--color-accent);
+    color: var(--color-text-dark);
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(245, 197, 24, 0.4);
+  }
+
+  /* Outline Button */
+  .btn-outline {
+    display: inline-block;
+    background: transparent;
+    border: 2px solid var(--color-accent);
+    color: var(--color-accent);
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-outline:hover {
+    background: var(--color-accent);
+    color: var(--color-text-dark);
+  }
+
+  /* Legacy support - map old classes to new */
   .btn-elegant {
-    @apply px-6 py-3 rounded-sm font-medium transition-all duration-300;
-    background-color: var(--color-matcha-500);
-    @apply text-white;
-    box-shadow: var(--shadow-elegant);
+    display: inline-block;
+    background: var(--color-accent);
+    color: var(--color-text-dark);
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
   }
 
   .btn-elegant:hover {
-    background-color: var(--color-matcha-600);
-    box-shadow: var(--shadow-elegant-lg);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(245, 197, 24, 0.4);
   }
 
   .btn-outline-elegant {
-    @apply px-6 py-3 rounded-sm font-medium transition-all duration-300;
-    border: 2px solid var(--color-matcha-500);
-    color: var(--color-matcha-500);
+    display: inline-block;
+    background: transparent;
+    border: 2px solid var(--color-accent);
+    color: var(--color-accent);
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
   }
 
   .btn-outline-elegant:hover {
-    background-color: var(--color-matcha-50);
+    background: var(--color-accent);
+    color: var(--color-text-dark);
   }
 
   /* Card styling */
   .card-elegant {
-    @apply bg-white rounded-lg overflow-hidden;
-    @apply transition-all duration-300;
+    background: white;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    transition: all 0.3s;
     box-shadow: var(--shadow-card);
   }
 
@@ -121,13 +191,132 @@
     box-shadow: var(--shadow-elegant-lg);
   }
 
+  /* Product Card */
+  .product-card {
+    background: transparent;
+    text-align: center;
+    padding: 16px;
+    transition: transform 0.2s;
+  }
+
+  .product-card:hover {
+    transform: translateY(-6px);
+  }
+
+  .product-card .bg-oval {
+    background: var(--color-surface);
+    border-radius: 50%;
+    width: 180px;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+  }
+
+  .product-card img {
+    height: 140px;
+    object-fit: contain;
+  }
+
+  .product-card .type-label {
+    font-size: 0.7rem;
+    color: var(--color-text-muted);
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .product-card .name {
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 6px;
+  }
+
+  .product-card .stars {
+    color: var(--color-accent);
+    font-size: 0.85rem;
+  }
+
+  .product-card .price {
+    font-weight: 800;
+    font-size: 1rem;
+    margin-top: 6px;
+  }
+
+  /* Feature List with Checkmarks */
+  .feature-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 12px;
+    color: var(--color-white);
+    font-size: 0.85rem;
+  }
+
+  .feature-list .check-icon {
+    color: var(--color-accent);
+    font-size: 1.1rem;
+    margin-top: 1px;
+    flex-shrink: 0;
+  }
+
+  /* Typography Classes */
+  .hero-headline {
+    font-size: clamp(3rem, 7vw, 6rem);
+    font-weight: 900;
+    line-height: 1.0;
+    text-transform: uppercase;
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 700;
+  }
+
+  .body-text {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    font-weight: 400;
+  }
+
+  .label-small {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-muted);
+  }
+
   /* Section spacing */
   .section-padding {
-    @apply py-16 md:py-24 lg:py-32;
+    padding: var(--space-xl) 0;
+  }
+
+  @media (min-width: 768px) {
+    .section-padding {
+      padding: var(--space-2xl) 0;
+    }
   }
 
   .container-elegant {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  @media (min-width: 768px) {
+    .container-elegant {
+      padding-left: 60px;
+      padding-right: 60px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container-elegant {
+      padding-left: 80px;
+      padding-right: 80px;
+    }
   }
 }
 
@@ -135,7 +324,9 @@
   /* Text gradients */
   .text-gradient-matcha {
     background: var(--gradient-matcha);
-    @apply bg-clip-text text-transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
   }
 
   /* Smooth scroll */

@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
 
-  modules: ['@pinia/nuxt', 'shadcn-nuxt', '@nuxt/image', '@nuxtjs/seo', '@nuxtjs/google-fonts'],
+  modules: ['@pinia/nuxt', 'shadcn-nuxt', '@nuxt/image', '@nuxtjs/google-fonts'],
 
   pages: true,
 
@@ -18,9 +18,8 @@ export default defineNuxtConfig({
   // Google Fonts configuration
   googleFonts: {
     families: {
-      'Playfair Display': [400, 500, 600, 700, 800, 900],
-      'Crimson Pro': [300, 400, 500, 600, 700],
-      'Inter': [300, 400, 500, 600, 700],
+      'Oswald': [700, 900],
+      'DM Sans': [400, 500, 700],
     },
     display: 'swap',
     preload: true,

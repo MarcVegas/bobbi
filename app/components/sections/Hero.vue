@@ -1,46 +1,62 @@
 <template>
-  <section class="relative h-screen min-h-[600px] overflow-hidden">
-    <!-- Parallax Background -->
-    <div
-      class="absolute inset-0 bg-cover bg-center"
-      :style="{
-        backgroundImage: `url(https://images.unsplash.com/photo-1624893464636-c122891445c6?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)`,
-        transform: `translateY(${offset}px)`,
-        willChange: 'transform',
-      }"
-    />
+  <section class="relative min-h-[600px] md:min-h-[700px] overflow-hidden" style="background: var(--color-primary);">
+    <div class="container-elegant">
+      <div class="grid md:grid-cols-2 gap-8 items-center py-16 md:py-20">
+        <!-- Left: Headline + Description + Features + CTA -->
+        <div class="relative z-10 animate-slide-up">
+          <!-- Headline with Yellow Underline -->
+          <h1 class="hero-headline text-white mb-6">
+            THE <span class="relative inline-block">
+              <span class="relative z-10">BEST COFFEE</span>
+              <svg class="absolute bottom-0 left-0 w-full h-3 -mb-2" viewBox="0 0 300 12" preserveAspectRatio="none">
+                <path d="M0,6 Q75,0 150,6 T300,6" fill="none" :stroke="'var(--color-accent)'" stroke-width="8" stroke-linecap="round"/>
+              </svg>
+            </span> IS HERE IN YOUR CITY
+          </h1>
 
-    <!-- Overlay -->
-    <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50" />
+          <!-- Description -->
+          <p class="body-text text-white/90 mb-8 max-w-md">
+            Bean Haven Café - where every cup tells a premium experience. Come, savor the difference!
+          </p>
 
-    <!-- Content -->
-    <div class="relative h-full flex items-center justify-center text-center container-elegant">
-      <div class="max-w-3xl animate-slide-up">
-        <h1 class="font-serif text-display-lg md:text-[5rem] font-bold text-white mb-6 leading-tight">
-          Experience Elegance<br />in Every Sip
-        </h1>
-        <p class="text-xl md:text-2xl text-white/90 mb-8 font-light">
-          Premium matcha, artisanal coffee, and handcrafted pastries
-        </p>
-        <a
-          href="#menu"
-          class="btn-elegant inline-block text-lg"
-        >
-          Explore Menu
-        </a>
+          <!-- Feature List with Checkmarks -->
+          <ul class="feature-list mb-8">
+            <li>
+              <span class="check-icon">✓</span>
+              <span><strong>Premium Beans:</strong> Sourced from the finest farms, roasted to perfection.</span>
+            </li>
+            <li>
+              <span class="check-icon">✓</span>
+              <span><strong>Nice Ambiance:</strong> A cozy, welcoming space for work, relaxation, or catching up with friends.</span>
+            </li>
+            <li>
+              <span class="check-icon">✓</span>
+              <span><strong>Affordable Prices:</strong> Enjoy top-quality coffee without breaking the bank.</span>
+            </li>
+          </ul>
+
+          <!-- CTA Button -->
+          <button class="btn-primary text-base">
+            Explore Our Product
+          </button>
+        </div>
+
+        <!-- Right: Coffee Image -->
+        <div class="relative flex items-center justify-center md:justify-end">
+          <div class="relative w-full max-w-md aspect-square">
+            <NuxtImg
+              src="/images/hero_image_transparent.jpg"
+              alt="Premium Coffee"
+              class="w-full h-full object-contain drop-shadow-2xl"
+              loading="eager"
+            />
+          </div>
+        </div>
       </div>
-    </div>
-
-    <!-- Scroll Indicator -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-      <ChevronDownIcon class="w-8 h-8 text-white" />
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { ChevronDownIcon } from '@heroicons/vue/24/outline';
-import { useParallax } from '~/composables/useParallax';
-
-const { offset } = useParallax(0.5);
+// No parallax needed for this design
 </script>
