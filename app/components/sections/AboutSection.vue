@@ -3,7 +3,7 @@
     <div class="container-elegant">
       <div class="grid md:grid-cols-2 gap-12 items-center">
         <!-- Left: Photos Collage -->
-        <div class="relative h-[500px]">
+        <div ref="aboutImages" class="relative h-[500px] scroll-fade-left">
           <!-- Background Image -->
           <div class="absolute top-0 left-0 w-[70%] h-[60%] rounded-lg overflow-hidden shadow-lg">
             <NuxtImg
@@ -24,7 +24,7 @@
         </div>
 
         <!-- Right: Text + CTA -->
-        <div class="space-y-6">
+        <div ref="aboutText" class="space-y-6 scroll-fade-right scroll-delay-200">
           <!-- Badge -->
           <div class="inline-block">
             <span class="label-small px-4 py-2 rounded-full" style="background: var(--color-surface); color: var(--color-text-muted);">
@@ -61,5 +61,24 @@
 </template>
 
 <script setup lang="ts">
-// About section with image collage
+import { onMounted, ref } from 'vue';
+
+const aboutImages = ref<HTMLElement | null>(null);
+const aboutText = ref<HTMLElement | null>(null);
+
+onMounted(() => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  if (aboutImages.value) observer.observe(aboutImages.value);
+  if (aboutText.value) observer.observe(aboutText.value);
+});
 </script>

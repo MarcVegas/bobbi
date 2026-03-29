@@ -360,4 +360,66 @@
   .animate-fade-in {
     animation: var(--animation-fade-in);
   }
+
+  /* Scroll animation utilities */
+  .scroll-fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .scroll-fade-up.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .scroll-fade-left {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .scroll-fade-left.in-view {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .scroll-fade-right {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .scroll-fade-right.in-view {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .scroll-scale {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .scroll-scale.in-view {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* Add stagger delays for multiple elements */
+  .scroll-delay-100 {
+    transition-delay: 100ms;
+  }
+
+  .scroll-delay-200 {
+    transition-delay: 200ms;
+  }
+
+  .scroll-delay-300 {
+    transition-delay: 300ms;
+  }
+
+  .scroll-delay-400 {
+    transition-delay: 400ms;
+  }
 }

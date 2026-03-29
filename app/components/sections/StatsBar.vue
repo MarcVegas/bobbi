@@ -2,7 +2,7 @@
   <section class="section-padding bg-white">
     <div class="container-elegant">
       <!-- Section Header -->
-      <div class="text-center mb-16">
+      <div ref="storeHeader" class="text-center mb-16 scroll-fade-up">
         <h2 class="section-title mb-4" style="color: var(--color-text-dark);">
           Visit Our Store
         </h2>
@@ -13,7 +13,7 @@
 
       <div class="grid md:grid-cols-2 gap-12 items-start">
         <!-- Left: Map -->
-        <div class="w-full h-[450px] rounded-lg overflow-hidden shadow-lg">
+        <div ref="storeMap" class="w-full h-[450px] rounded-lg overflow-hidden shadow-lg scroll-fade-left scroll-delay-200">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125307.49850171986!2d124.59157069821303!3d11.049171841264721!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3307f730e0176ac1%3A0x913bc7c66a44f9a6!2sOrmoc%20City%2C%20Leyte!5e0!3m2!1sen!2sph!4v1774685819727!5m2!1sen!2sph"
             width="100%"
@@ -26,7 +26,7 @@
         </div>
 
         <!-- Right: Contact Details -->
-        <div class="space-y-8">
+        <div ref="storeDetails" class="space-y-8 scroll-fade-right scroll-delay-300">
           <!-- Address -->
           <div>
             <div class="flex items-start gap-4 mb-3">
@@ -99,11 +99,16 @@
 </template>
 
 <script setup lang="ts">
+import { onMounted, ref } from 'vue';
 import {
   ChatBubbleOvalLeftEllipsisIcon as InstagramIcon,
   ChatBubbleLeftRightIcon as FacebookIcon,
   AtSymbolIcon as TwitterIcon,
 } from '@heroicons/vue/24/outline';
+
+const storeHeader = ref<HTMLElement | null>(null);
+const storeMap = ref<HTMLElement | null>(null);
+const storeDetails = ref<HTMLElement | null>(null);
 
 const getSocialIcon = (platform: string) => {
   const icons: Record<string, any> = {
@@ -113,4 +118,21 @@ const getSocialIcon = (platform: string) => {
   };
   return icons[platform] || InstagramIcon;
 };
+
+onMounted(() => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  if (storeHeader.value) observer.observe(storeHeader.value);
+  if (storeMap.value) observer.observe(storeMap.value);
+  if (storeDetails.value) observer.observe(storeDetails.value);
+});
 </script>

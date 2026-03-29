@@ -2,7 +2,7 @@
   <section class="section-padding" style="background: var(--color-cream);">
     <div class="container-elegant">
       <!-- Section Header -->
-      <div class="text-center mb-16">
+      <div ref="whyHeader" class="text-center mb-16 scroll-fade-up">
         <h2 class="section-title mb-4" style="color: var(--color-text-dark);">
           Why We Are Different
         </h2>
@@ -13,7 +13,7 @@
 
       <div class="grid md:grid-cols-3 gap-8 items-center">
         <!-- Left Column: 2x2 Grid -->
-        <div class="space-y-8">
+        <div ref="whyLeft" class="space-y-8 scroll-fade-left scroll-delay-200">
           <!-- Roasted to Perfection -->
           <div class="text-center md:text-right">
             <div class="inline-flex items-center justify-center w-16 h-16 rounded-full mb-4" style="background: var(--color-surface);">
@@ -43,7 +43,7 @@
         </div>
 
         <!-- Center: Coffee Cup Image -->
-        <div class="flex items-center justify-center">
+        <div ref="whyCenter" class="flex items-center justify-center scroll-scale scroll-delay-300">
           <div class="relative w-64 h-80 flex items-center justify-center">
             <div class="absolute inset-0 rounded-full opacity-10" style="background: var(--color-accent);"></div>
             <NuxtImg
@@ -55,7 +55,7 @@
         </div>
 
         <!-- Right Column: 2x2 Grid -->
-        <div class="space-y-8">
+        <div ref="whyRight" class="space-y-8 scroll-fade-right scroll-delay-200">
           <!-- Artisan Roasting -->
           <div class="text-center md:text-left">
             <div class="inline-flex items-center justify-center w-16 h-16 rounded-full mb-4" style="background: var(--color-surface);">
@@ -91,5 +91,28 @@
 </template>
 
 <script setup lang="ts">
-// Why We Are Different section
+import { onMounted, ref } from 'vue';
+
+const whyHeader = ref<HTMLElement | null>(null);
+const whyLeft = ref<HTMLElement | null>(null);
+const whyCenter = ref<HTMLElement | null>(null);
+const whyRight = ref<HTMLElement | null>(null);
+
+onMounted(() => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  if (whyHeader.value) observer.observe(whyHeader.value);
+  if (whyLeft.value) observer.observe(whyLeft.value);
+  if (whyCenter.value) observer.observe(whyCenter.value);
+  if (whyRight.value) observer.observe(whyRight.value);
+});
 </script>

@@ -3,7 +3,7 @@
     <div class="container-elegant">
       <div class="grid md:grid-cols-2 gap-8 items-center py-16 md:py-20">
         <!-- Left: Headline + Description + Features + CTA -->
-        <div class="relative z-10 animate-slide-up">
+        <div ref="heroLeft" class="relative z-10 scroll-fade-left">
           <!-- Headline with Yellow Underline -->
           <h1 class="hero-headline text-white mb-6">
             THE <span class="relative inline-block">
@@ -42,7 +42,7 @@
         </div>
 
         <!-- Right: Matcha Image -->
-        <div class="relative flex items-center justify-center md:justify-end -mr-8 md:-mr-16">
+        <div ref="heroRight" class="relative flex items-center justify-center md:justify-end -mr-8 md:-mr-16 scroll-fade-right scroll-delay-200">
           <div class="relative w-full max-w-2xl">
             <NuxtImg
               src="/images/hero_image_transparent.jpg"
@@ -58,5 +58,24 @@
 </template>
 
 <script setup lang="ts">
-// No parallax needed for this design
+import { onMounted, ref } from 'vue';
+
+const heroLeft = ref<HTMLElement | null>(null);
+const heroRight = ref<HTMLElement | null>(null);
+
+onMounted(() => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  if (heroLeft.value) observer.observe(heroLeft.value);
+  if (heroRight.value) observer.observe(heroRight.value);
+});
 </script>
