@@ -19,9 +19,15 @@
               </svg>
             </button>
 
-            <!-- Placeholder Image -->
+            <!-- Image: real photo if available, otherwise leaf placeholder -->
             <div class="lb-pic">
-              <div class="lb-pic-inner">
+              <img
+                v-if="item.imageUrl"
+                :src="item.imageUrl"
+                :alt="item.name"
+                class="lb-real-img"
+              />
+              <div v-else class="lb-pic-inner">
                 <svg class="lb-leaf" viewBox="0 0 48 54" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M24 2C24 2 10 11 6 22C3 31 6 40 13 44C17.5 46.5 24 46 24 46C24 46 30.5 46.5 35 44C42 40 45 31 42 22C38 11 24 2 24 2Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
                   <line x1="24" y1="2" x2="24" y2="50" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
@@ -181,6 +187,12 @@ onUnmounted(() => {
   .lb-pic {
     height: 220px;
   }
+}
+
+.lb-real-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .lb-pic-inner {

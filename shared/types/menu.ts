@@ -19,6 +19,7 @@ export interface MenuItem {
   featured?: boolean;
   sortOrder?: number;
   imagePath?: string;
+  imageUrl?: string;
   price?: number;
 }
 

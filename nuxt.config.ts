@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
 
-  modules: ['@pinia/nuxt', 'shadcn-nuxt', '@nuxt/image', '@nuxtjs/google-fonts'],
+  modules: ['@pinia/nuxt', 'shadcn-nuxt', '@nuxt/image', '@nuxtjs/google-fonts', '@peterbud/nuxt-query'],
 
   pages: true,
 
@@ -82,5 +82,27 @@ export default defineNuxtConfig({
   // OG Image configuration
   ogImage: {
     enabled: false, // Disable for now to avoid prompts
+  },
+
+  // Sanity CMS — Nuxt maps NUXT_PUBLIC_* env vars to runtimeConfig.public automatically
+  runtimeConfig: {
+    public: {
+      sanityProjectId: 'qetxhdwg',
+      sanityDataset: 'production',
+      sanityApiVersion: '2024-01-01',
+    },
+  },
+
+  // nuxt-query (TanStack Query) config
+  nuxtQuery: {
+    autoImports: ['useQuery'],
+    queryClientOptions: {
+      defaultOptions: {
+        queries: {
+          staleTime: 1000 * 60 * 5,
+          refetchOnWindowFocus: false,
+        },
+      },
+    },
   },
 })

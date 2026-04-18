@@ -59,9 +59,15 @@
             @keydown.enter="activeItem = item"
             @keydown.space.prevent="activeItem = item"
           >
-            <!-- Pic Coming Soon Placeholder -->
+            <!-- Image: real photo if available, else leaf placeholder -->
             <div class="pic-placeholder">
-              <div class="pic-placeholder-inner">
+              <img
+                v-if="item.imageUrl"
+                :src="item.imageUrl"
+                :alt="item.name"
+                class="card-real-img"
+              />
+              <div v-else class="pic-placeholder-inner">
                 <svg class="leaf-icon" viewBox="0 0 48 54" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M24 2C24 2 10 11 6 22C3 31 6 40 13 44C17.5 46.5 24 46 24 46C24 46 30.5 46.5 35 44C42 40 45 31 42 22C38 11 24 2 24 2Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
                   <line x1="24" y1="2" x2="24" y2="50" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
@@ -111,11 +117,14 @@
 
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue';
-import { menuData } from '../../../data/menu';
 import type { MenuItem } from '../../../shared/types/menu';
 import MenuLightbox from '../menu/MenuLightbox.vue';
 
 const activeItem = ref<MenuItem | null>(null);
+const { items: allItems, isFromCMS } = useMenuData();
+watch(isFromCMS, (val) => {
+  if (val) console.log('[useMenuData] ✅ Live Sanity data loaded:', allItems.value.length, 'items');
+}, { immediate: true });
 
 const mainTabs = [
   {
@@ -167,7 +176,7 @@ function selectSub(id: string) {
 }
 
 const filteredItems = computed(() => {
-  return menuData.items
+  return allItems.value
     .filter(item => {
       if (item.category !== selectedMain.value) return false;
       if (selectedSub.value === 'all') return true;
@@ -321,6 +330,14 @@ const filteredItems = computed(() => {
   .menu-item-card:active {
     transform: scale(0.98);
   }
+}
+
+/* ── Card Image ─────────────────────────────────────── */
+.card-real-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 /* ── Pic Placeholder ────────────────────────────────── */
