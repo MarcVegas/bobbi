@@ -3,6 +3,7 @@
     <!-- Image -->
     <div class="relative aspect-[3/4] overflow-hidden bg-gray-100">
       <NuxtImg
+        v-if="item.imagePath"
         :src="item.imagePath"
         :alt="item.name"
         format="webp"

@@ -20,6 +20,7 @@ export default defineNuxtConfig({
     families: {
       'Oswald': [700, 900],
       'DM Sans': [400, 500, 700],
+      'Playfair Display': { ital: [400] },
     },
     display: 'swap',
     preload: true,
