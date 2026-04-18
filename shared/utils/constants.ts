@@ -52,7 +52,7 @@ export const MENU_CONFIG = {
 
 export const CAFE_INFO = {
   name: 'Bobbi Cafe - Matcha Slow Bar',
-  address: 'GF Unit 2, Cristina Maglasang Bldg., Corner Osmeña and Arradaza St., Brgy District 10, Ormoc City, Philippines',
+  address: 'GF Unit 2, Cristina Maglasang Bldg., Corner Osmeña and Arradaza St., Brgy District 10, Ormoc City, Philippines. (Landmark: Across Cristina Business Suite)',
   phone: '0924-103-8474',
   email: '',
   hours: {

@@ -23,7 +23,7 @@
             </div>
             <h3 class="font-bold text-lg mb-2" style="color: var(--color-text-dark);">Whisked to Perfection</h3>
             <p class="body-text text-sm" style="color: var(--color-text-muted);">
-              Expert preparation techniques delivering a consistently satisfying cup of matcha
+              Expert preparation techniques delivering a consistently satisfying cup of matcha or coffee, every time
             </p>
           </div>
 
@@ -36,8 +36,7 @@
             </div>
             <h3 class="font-bold text-lg mb-2" style="color: var(--color-text-dark);">From Farm to Cup</h3>
             <p class="body-text text-sm" style="color: var(--color-text-muted);">
-              We follow each matcha leaf's journey from farm to cup,
-              ensuring sustainable and ethical sourcing practices
+              We only source from trusted suppliers who share our commitment to quality, ensuring you get the best matcha experience in Ormoc City
             </p>
           </div>
         </div>
@@ -65,8 +64,7 @@
             </div>
             <h3 class="font-bold text-lg mb-2" style="color: var(--color-text-dark);">Artisan Preparation</h3>
             <p class="body-text text-sm" style="color: var(--color-text-muted);">
-              Our matcha bar combines state-of-the-art
-              equipment with elegant design
+              Our matcha bar is staffed by skilled baristas who are passionate about their craft, ensuring every cup is made with care and expertise
             </p>
           </div>
 

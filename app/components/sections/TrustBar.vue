@@ -5,7 +5,7 @@
         <!-- Tagline Left -->
         <div class="text-center md:text-left">
           <p class="font-bold text-lg" style="color: var(--color-text-dark);">
-            Trusted by matcha lovers everywhere
+            A premium matcha experience, now in Ormoc City. Savor the difference at Bobbi Cafe - where every cup tells a story of quality and care.
           </p>
         </div>
 
