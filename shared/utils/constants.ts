@@ -51,18 +51,17 @@ export const MENU_CONFIG = {
 } as const;
 
 export const CAFE_INFO = {
-  name: 'Bobbi Cafe',
-  address: '123 Main Street, City, State 12345',
-  phone: '+1 (555) 123-4567',
-  email: 'hello@bobbicafe.com',
+  name: 'Bobbi Cafe - Matcha Slow Bar',
+  address: 'GF Unit 2, Cristina Maglasang Bldg., Corner Osmeña and Arradaza St., Brgy District 10, Ormoc City, Philippines',
+  phone: '0924-103-8474',
+  email: '',
   hours: {
-    weekday: 'Monday - Friday: 7:00 AM - 7:00 PM',
-    weekend: 'Saturday - Sunday: 8:00 AM - 8:00 PM',
+    weekday: 'Monday - Sunday: 9:00 AM - 8:00 PM'
   },
   social: {
-    instagram: 'https://instagram.com/bobbicafe',
-    facebook: 'https://facebook.com/bobbicafe',
-    twitter: 'https://twitter.com/bobbicafe',
+    //instagram: 'https://instagram.com/bobbicafe',
+    facebook: 'https://www.facebook.com/profile.php?id=100075869505742',
+    //twitter: 'https://twitter.com/bobbicafe',
   },
   delivery: {
     uberEats: '#',

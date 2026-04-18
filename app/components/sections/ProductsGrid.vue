@@ -53,6 +53,11 @@
             v-for="item in filteredItems"
             :key="item.id"
             class="menu-item-card"
+            role="button"
+            tabindex="0"
+            @click="activeItem = item"
+            @keydown.enter="activeItem = item"
+            @keydown.space.prevent="activeItem = item"
           >
             <!-- Pic Coming Soon Placeholder -->
             <div class="pic-placeholder">
@@ -98,12 +103,19 @@
         </div>
       </transition>
     </div>
+
+    <!-- Lightbox -->
+    <MenuLightbox :item="activeItem" @close="activeItem = null" />
   </section>
 </template>
 
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue';
 import { menuData } from '../../../data/menu';
+import type { MenuItem } from '../../../shared/types/menu';
+import MenuLightbox from '../menu/MenuLightbox.vue';
+
+const activeItem = ref<MenuItem | null>(null);
 
 const mainTabs = [
   {
@@ -292,6 +304,12 @@ const filteredItems = computed(() => {
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
+  outline: none;
+}
+
+.menu-item-card:focus-visible {
+  box-shadow: 0 0 0 3px rgba(26, 58, 42, 0.35);
 }
 
 .menu-item-card:hover {

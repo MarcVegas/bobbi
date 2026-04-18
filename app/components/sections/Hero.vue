@@ -6,6 +6,7 @@
         <div ref="heroLeft" class="relative z-10 scroll-fade-left">
           <!-- Headline with Yellow Underline -->
           <h1 class="hero-headline text-white mb-6">
+            <img src="/images/bobbi_text_logo.png" class=" w-md" alt="Bobbi Logo">
             THE <span class="relative inline-block">
               <span class="relative z-10">BEST MATCHA</span>
               <svg class="absolute bottom-0 left-0 w-full h-3 -mb-2" viewBox="0 0 300 12" preserveAspectRatio="none">
@@ -23,15 +24,11 @@
           <ul class="feature-list mb-8">
             <li>
               <span class="check-icon">✓</span>
-              <span><strong>Premium Beans:</strong> Sourced from the finest farms, roasted to perfection.</span>
+              <span><strong>Premium Beans and Matcha:</strong> Sourced from the finest suppliers, made to perfection.</span>
             </li>
             <li>
               <span class="check-icon">✓</span>
               <span><strong>Nice Ambiance:</strong> A cozy, welcoming space for work, relaxation, or catching up with friends.</span>
-            </li>
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>Affordable Prices:</strong> Enjoy top-quality coffee without breaking the bank.</span>
             </li>
           </ul>
 

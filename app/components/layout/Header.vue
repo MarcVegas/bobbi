@@ -19,6 +19,9 @@
           <a href="#products" class="text-sm font-medium hover:opacity-70 transition-opacity" style="color: var(--color-text-dark);">
             Our Product
           </a>
+          <a href="#menu" class="text-sm font-medium hover:opacity-70 transition-opacity" style="color: var(--color-text-dark);">
+            Our Menu
+          </a>
           <a href="#store" class="text-sm font-medium hover:opacity-70 transition-opacity" style="color: var(--color-text-dark);">
             Our Store
           </a>

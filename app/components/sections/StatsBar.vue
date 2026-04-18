@@ -14,15 +14,7 @@
       <div class="grid md:grid-cols-2 gap-12 items-start">
         <!-- Left: Map -->
         <div ref="storeMap" class="w-full h-[450px] rounded-lg overflow-hidden shadow-lg scroll-fade-left scroll-delay-200">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125307.49850171986!2d124.59157069821303!3d11.049171841264721!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3307f730e0176ac1%3A0x913bc7c66a44f9a6!2sOrmoc%20City%2C%20Leyte!5e0!3m2!1sen!2sph!4v1774685819727!5m2!1sen!2sph"
-            width="100%"
-            height="450"
-            style="border:0;"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-          ></iframe>
+<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1024.2254428084718!2d124.61038933276927!3d11.007539420993513!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sph!4v1776495773257!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
 
         <!-- Right: Contact Details -->
