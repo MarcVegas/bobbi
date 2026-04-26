@@ -45,67 +45,91 @@
     <!-- Menu Grid -->
     <div class="container-elegant pb-16 pt-6">
       <transition name="menu-fade" mode="out-in">
-        <div
-          :key="selectedMain + '-' + selectedSub"
-          class="menu-grid"
-        >
-          <article
-            v-for="item in filteredItems"
-            :key="item.id"
-            class="menu-item-card"
-            role="button"
-            tabindex="0"
-            @click="activeItem = item"
-            @keydown.enter="activeItem = item"
-            @keydown.space.prevent="activeItem = item"
-          >
-            <!-- Image: real photo if available, else leaf placeholder -->
-            <div class="pic-placeholder">
-              <img
-                v-if="item.imageUrl"
-                :src="item.imageUrl"
-                :alt="item.name"
-                class="card-real-img"
-              />
-              <div v-else class="pic-placeholder-inner">
-                <svg class="leaf-icon" viewBox="0 0 48 54" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M24 2C24 2 10 11 6 22C3 31 6 40 13 44C17.5 46.5 24 46 24 46C24 46 30.5 46.5 35 44C42 40 45 31 42 22C38 11 24 2 24 2Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
-                  <line x1="24" y1="2" x2="24" y2="50" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
-                  <path d="M24 20 C20 17 14 16 11 18" stroke="currentColor" stroke-width="1" stroke-linecap="round" fill="none"/>
-                  <path d="M24 28 C28 25 34 24 37 26" stroke="currentColor" stroke-width="1" stroke-linecap="round" fill="none"/>
-                  <path d="M24 36 C21 34 17 33 15 34" stroke="currentColor" stroke-width="1" stroke-linecap="round" fill="none"/>
-                </svg>
-                <span class="pic-soon-text">Pic coming soon</span>
-              </div>
+        <div :key="selectedMain + '-' + selectedSub">
+          <!-- Empty state -->
+          <div v-if="filteredItems.length === 0" class="empty-state">
+            <div class="empty-state-icon">
+              <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- plate -->
+                <ellipse cx="40" cy="52" rx="26" ry="6" stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.25"/>
+                <ellipse cx="40" cy="50" rx="26" ry="10" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                <!-- cloche dome -->
+                <path d="M14 50 C14 30 66 30 66 50" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                <!-- cloche handle knob -->
+                <circle cx="40" cy="28" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                <line x1="40" y1="31" x2="40" y2="36" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <!-- sparkle left -->
+                <line x1="22" y1="18" x2="22" y2="24" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/>
+                <line x1="19" y1="21" x2="25" y2="21" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/>
+                <!-- sparkle right -->
+                <line x1="58" y1="14" x2="58" y2="20" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/>
+                <line x1="55" y1="17" x2="61" y2="17" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/>
+              </svg>
             </div>
+            <h3 class="empty-state-title">New products coming soon</h3>
+            <p class="empty-state-sub">We're still crafting something delicious for this section.<br>Check back with us shortly.</p>
+          </div>
 
-            <!-- Card Info -->
-            <div class="card-body">
-              <!-- Sub badge + best-seller badge row -->
-              <div class="card-meta">
-                <span class="sub-badge">{{ item.subcategoryLabel }}</span>
-                <span v-if="item.badge === 'best-seller'" class="badge-star">★ Best Seller</span>
-                <span v-else-if="item.badge === 'new'" class="badge-new">New</span>
-                <span v-else-if="item.badge === 'popular'" class="badge-pop">Popular</span>
+          <!-- Menu grid -->
+          <div v-else class="menu-grid">
+            <article
+              v-for="item in filteredItems"
+              :key="item.id"
+              class="menu-item-card"
+              role="button"
+              tabindex="0"
+              @click="activeItem = item"
+              @keydown.enter="activeItem = item"
+              @keydown.space.prevent="activeItem = item"
+            >
+              <!-- Image: real photo if available, else leaf placeholder -->
+              <div class="pic-placeholder">
+                <img
+                  v-if="item.imageUrl"
+                  :src="item.imageUrl"
+                  :alt="item.name"
+                  class="card-real-img"
+                />
+                <div v-else class="pic-placeholder-inner">
+                  <svg class="leaf-icon" viewBox="0 0 48 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M24 2C24 2 10 11 6 22C3 31 6 40 13 44C17.5 46.5 24 46 24 46C24 46 30.5 46.5 35 44C42 40 45 31 42 22C38 11 24 2 24 2Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                    <line x1="24" y1="2" x2="24" y2="50" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                    <path d="M24 20 C20 17 14 16 11 18" stroke="currentColor" stroke-width="1" stroke-linecap="round" fill="none"/>
+                    <path d="M24 28 C28 25 34 24 37 26" stroke="currentColor" stroke-width="1" stroke-linecap="round" fill="none"/>
+                    <path d="M24 36 C21 34 17 33 15 34" stroke="currentColor" stroke-width="1" stroke-linecap="round" fill="none"/>
+                  </svg>
+                  <span class="pic-soon-text">Pic coming soon</span>
+                </div>
               </div>
 
-              <h3 class="item-name">{{ item.name }}</h3>
+              <!-- Card Info -->
+              <div class="card-body">
+                <!-- Sub badge + best-seller badge row -->
+                <div class="card-meta">
+                  <span class="sub-badge">{{ item.subcategoryLabel }}</span>
+                  <span v-if="item.badge === 'best-seller'" class="badge-star">★ Best Seller</span>
+                  <span v-else-if="item.badge === 'new'" class="badge-new">New</span>
+                  <span v-else-if="item.badge === 'popular'" class="badge-pop">Popular</span>
+                </div>
 
-              <p v-if="item.description" class="item-description">{{ item.description }}</p>
+                <h3 class="item-name">{{ item.name }}</h3>
 
-              <!-- Prices -->
-              <div class="price-row">
-                <span
-                  v-for="p in item.prices"
-                  :key="p.label"
-                  class="price-chip"
-                >
-                  <span v-if="p.label !== '1 size'" class="price-size">{{ p.label }}</span>
-                  <span class="price-amount">₱{{ p.price }}</span>
-                </span>
+                <p v-if="item.description" class="item-description">{{ item.description }}</p>
+
+                <!-- Prices -->
+                <div class="price-row">
+                  <span
+                    v-for="p in item.prices"
+                    :key="p.label"
+                    class="price-chip"
+                  >
+                    <span v-if="p.label !== '1 size'" class="price-size">{{ p.label }}</span>
+                    <span class="price-amount">₱{{ p.price }}</span>
+                  </span>
+                </div>
               </div>
-            </div>
-          </article>
+            </article>
+          </div>
         </div>
       </transition>
     </div>
@@ -137,6 +161,36 @@ const mainTabs = [
     label: 'Coffee',
     icon: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 8h1a4 4 0 0 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>',
   },
+  {
+    id: 'pasta' as const,
+    label: 'Pasta',
+    icon: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12c0-5 3-9 9-9s9 4 9 9"/><path d="M3 12h18"/><path d="M7 12c0 3 2 6 5 6s5-3 5-6"/><path d="M10 6c0 1.5.5 3 2 4"/><path d="M14 6c0 1.5-.5 3-2 4"/></svg>',
+  },
+  {
+    id: 'pastries' as const,
+    label: 'Pastries',
+    icon: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19c0-4 2-7 8-7s8 3 8 7"/><path d="M9 12C7 10 6 7 8 5c2-2 5-1 6 1s0 4-2 5"/><path d="M15 12c2-2 3-5 1-7-2-2-5-1-6 1"/><line x1="4" y1="19" x2="20" y2="19"/></svg>',
+  },
+  {
+    id: 'chicken-wings' as const,
+    label: 'Wings',
+    icon: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20c3-3 5-7 5-11 0-2 1-4 3-5 3-1 6 1 7 4 1 2 0 5-2 7L4 20z"/><path d="M9 9c1 2 1 4 0 6"/><path d="M13 7c0 2-1 4-3 6"/></svg>',
+  },
+  {
+    id: 'rice-meals' as const,
+    label: 'Rice Meals',
+    icon: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 11c0-3.3 3.6-6 8-6s8 2.7 8 6"/><path d="M4 11v2c0 3.3 3.6 6 8 6s8-2.7 8-6v-2"/><ellipse cx="12" cy="11" rx="8" ry="3"/></svg>',
+  },
+  {
+    id: 'sandwiches-toasts' as const,
+    label: 'Sandwiches',
+    icon: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11h18"/><path d="M3 14h18"/><path d="M5 8c0-1.1 1-2 2-2h10c1 0 2 .9 2 2v3H5V8z"/><path d="M5 14v3c0 1.1 1 2 2 2h10c1 0 2-.9 2-2v-3"/></svg>',
+  },
+  {
+    id: 'snacks-sides' as const,
+    label: 'Snacks',
+    icon: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h2l1 7h8l1-7h2"/><path d="M8 11v8a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-8"/><line x1="10" y1="7" x2="10" y2="11"/><line x1="14" y1="7" x2="14" y2="11"/></svg>',
+  },
 ];
 
 const subcategories = {
@@ -156,9 +210,45 @@ const subcategories = {
     { id: 'caffeinated-frosts', label: 'Caffeinated Frosts' },
     { id: 'cream-frosts', label: 'Cream Frosts' },
   ],
+  pasta: [
+    { id: 'all', label: 'All Pasta' },
+    { id: 'creamy-pastas', label: 'Creamy Pastas' },
+    { id: 'tomato-pastas', label: 'Tomato-based Pastas' },
+    { id: 'baked-pastas', label: 'Baked Pastas' },
+  ],
+  pastries: [
+    { id: 'all', label: 'All Pastries' },
+    { id: 'croissants-danishes', label: 'Croissants & Danishes' },
+    { id: 'muffins-loaves', label: 'Muffins & Loaves' },
+    { id: 'cookies-bars', label: 'Cookies & Bars' },
+    { id: 'cakes-slices', label: 'Cakes & Slices' },
+  ],
+  'chicken-wings': [
+    { id: 'all', label: 'All Wings' },
+    { id: 'classic-wings', label: 'Classic Wings' },
+    { id: 'sauced-wings', label: 'Sauced Wings' },
+    { id: 'dry-rub-wings', label: 'Dry Rub Wings' },
+  ],
+  'rice-meals': [
+    { id: 'all', label: 'All Rice Meals' },
+    { id: 'silog-meals', label: 'Silog Meals' },
+    { id: 'bowls', label: 'Bowls' },
+    { id: 'grilled-mains', label: 'Grilled Mains' },
+  ],
+  'sandwiches-toasts': [
+    { id: 'all', label: 'All Sandwiches' },
+    { id: 'toasties', label: 'Toasties' },
+    { id: 'club-sandwiches', label: 'Club Sandwiches' },
+    { id: 'open-faced', label: 'Open-faced' },
+  ],
+  'snacks-sides': [
+    { id: 'all', label: 'All Snacks' },
+    { id: 'fries-chips', label: 'Fries & Chips' },
+    { id: 'dips-spreads', label: 'Dips & Spreads' },
+  ],
 };
 
-const selectedMain = ref<'matcha' | 'coffee'>('matcha');
+const selectedMain = ref<'matcha' | 'coffee' | 'pasta' | 'pastries' | 'chicken-wings' | 'rice-meals' | 'sandwiches-toasts' | 'snacks-sides'>('matcha');
 const selectedSub = ref('all');
 
 const currentSubcategories = computed(() => subcategories[selectedMain.value]);
@@ -167,7 +257,7 @@ watch(selectedMain, () => {
   selectedSub.value = 'all';
 });
 
-function selectMain(id: 'matcha' | 'coffee') {
+function selectMain(id: 'matcha' | 'coffee' | 'pasta' | 'pastries' | 'chicken-wings' | 'rice-meals' | 'sandwiches-toasts' | 'snacks-sides') {
   selectedMain.value = id;
 }
 
@@ -524,6 +614,46 @@ const filteredItems = computed(() => {
   font-size: 0.72rem;
   font-weight: 800;
   color: var(--color-primary);
+}
+
+/* ── Empty State ────────────────────────────────────── */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 24px 80px;
+  text-align: center;
+}
+
+.empty-state-icon {
+  width: 80px;
+  height: 80px;
+  color: var(--color-primary);
+  opacity: 0.45;
+  margin-bottom: 20px;
+}
+
+.empty-state-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.empty-state-title {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-dark);
+  margin-bottom: 10px;
+}
+
+.empty-state-sub {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  line-height: 1.65;
+  max-width: 320px;
 }
 
 /* ── Transition ─────────────────────────────────────── */
