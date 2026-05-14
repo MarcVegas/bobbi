@@ -17,6 +17,7 @@ export interface MenuItem {
   prices: PriceOption[];
   badge?: MenuBadge;
   featured?: boolean;
+  soldOut?: boolean;
   sortOrder?: number;
   imagePath?: string;
   imageUrl?: string;

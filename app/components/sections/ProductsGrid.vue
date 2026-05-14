@@ -16,7 +16,7 @@
         <!-- Main Tabs -->
         <div class="flex justify-center gap-3 mb-3">
           <button
-            v-for="tab in mainTabs"
+            v-for="tab in visibleMainTabs"
             :key="tab.id"
             @click="selectMain(tab.id)"
             :class="['main-tab', selectedMain === tab.id ? 'main-tab--active' : '']"
@@ -251,7 +251,27 @@ const subcategories = {
 const selectedMain = ref<'matcha' | 'coffee' | 'pasta' | 'pastries' | 'chicken-wings' | 'rice-meals' | 'sandwiches-toasts' | 'snacks-sides'>('matcha');
 const selectedSub = ref('all');
 
-const currentSubcategories = computed(() => subcategories[selectedMain.value]);
+// Exclude sold-out items globally
+const availableItems = computed(() =>
+  allItems.value.filter(item => !item.soldOut)
+);
+
+// Only show main tabs that have at least one available item
+const visibleMainTabs = computed(() =>
+  mainTabs.filter(tab =>
+    availableItems.value.some(item => item.category === tab.id)
+  )
+);
+
+// Only show subcategory chips that have at least one available item (always keep "All")
+const currentSubcategories = computed(() =>
+  subcategories[selectedMain.value].filter(sub => {
+    if (sub.id === 'all') return true;
+    return availableItems.value.some(
+      item => item.category === selectedMain.value && item.subcategory === sub.id
+    );
+  })
+);
 
 watch(selectedMain, () => {
   selectedSub.value = 'all';
@@ -266,7 +286,7 @@ function selectSub(id: string) {
 }
 
 const filteredItems = computed(() => {
-  return allItems.value
+  return availableItems.value
     .filter(item => {
       if (item.category !== selectedMain.value) return false;
       if (selectedSub.value === 'all') return true;

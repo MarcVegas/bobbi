@@ -15,6 +15,7 @@ const MENU_QUERY = groq`
     "prices": prices[] { label, price },
     badge,
     featured,
+    soldOut,
     sortOrder,
     "imageUrl": image.asset->url
   }

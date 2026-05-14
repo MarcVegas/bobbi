@@ -175,7 +175,6 @@ onUnmounted(() => {
 
 /* ── Pic Placeholder ───────────────────────────────── */
 .lb-pic {
-  height: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -183,16 +182,26 @@ onUnmounted(() => {
   flex-shrink: 0;
 }
 
-@media (min-width: 640px) {
-  .lb-pic {
-    height: 220px;
-  }
+/* When a real image is present, let it dictate the height naturally */
+.lb-pic:has(.lb-real-img) {
+  background: white;
 }
 
 .lb-real-img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  display: block;
+}
+
+/* Placeholder still needs a fixed height since there's no image to set dimensions */
+.lb-pic:not(:has(.lb-real-img)) {
+  height: 200px;
+}
+
+@media (min-width: 640px) {
+  .lb-pic:not(:has(.lb-real-img)) {
+    height: 220px;
+  }
 }
 
 .lb-pic-inner {
