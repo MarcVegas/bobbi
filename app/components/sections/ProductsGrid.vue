@@ -16,7 +16,7 @@
         <!-- Main Tabs -->
         <div class="flex justify-center gap-3 mb-3">
           <button
-            v-for="tab in visibleMainTabs"
+            v-for="tab in mainTabs"
             :key="tab.id"
             @click="selectMain(tab.id)"
             :class="['main-tab', selectedMain === tab.id ? 'main-tab--active' : '']"
@@ -150,105 +150,59 @@ watch(isFromCMS, (val) => {
   if (val) console.log('[useMenuData] ✅ Live Sanity data loaded:', allItems.value.length, 'items');
 }, { immediate: true });
 
-const mainTabs = [
-  {
-    id: 'matcha' as const,
+// Config for known categories — icon + display label + sort order.
+// Any category arriving from Sanity that isn't listed here gets a generic icon
+// and a label auto-formatted from its ID (kebab-case → Title Case).
+const categoryConfig: Record<string, { label: string; icon: string; order: number }> = {
+  matcha: {
+    order: 0,
     label: 'Matcha',
     icon: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6 2 3 7 3 12s3 10 9 10 9-5 9-10S18 2 12 2z"/><line x1="12" y1="2" x2="12" y2="22"/><path d="M12 9c-2-2-5-3-7-2"/><path d="M12 15c2-2 5-3 7-2"/></svg>',
   },
-  {
-    id: 'coffee' as const,
+  coffee: {
+    order: 1,
     label: 'Coffee',
     icon: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 8h1a4 4 0 0 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>',
   },
-  {
-    id: 'pasta' as const,
+  pasta: {
+    order: 2,
     label: 'Pasta',
     icon: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12c0-5 3-9 9-9s9 4 9 9"/><path d="M3 12h18"/><path d="M7 12c0 3 2 6 5 6s5-3 5-6"/><path d="M10 6c0 1.5.5 3 2 4"/><path d="M14 6c0 1.5-.5 3-2 4"/></svg>',
   },
-  {
-    id: 'pastries' as const,
+  pastries: {
+    order: 3,
     label: 'Pastries',
     icon: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19c0-4 2-7 8-7s8 3 8 7"/><path d="M9 12C7 10 6 7 8 5c2-2 5-1 6 1s0 4-2 5"/><path d="M15 12c2-2 3-5 1-7-2-2-5-1-6 1"/><line x1="4" y1="19" x2="20" y2="19"/></svg>',
   },
-  {
-    id: 'chicken-wings' as const,
+  'chicken-wings': {
+    order: 4,
     label: 'Wings',
     icon: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20c3-3 5-7 5-11 0-2 1-4 3-5 3-1 6 1 7 4 1 2 0 5-2 7L4 20z"/><path d="M9 9c1 2 1 4 0 6"/><path d="M13 7c0 2-1 4-3 6"/></svg>',
   },
-  {
-    id: 'rice-meals' as const,
+  'rice-meals': {
+    order: 5,
     label: 'Rice Meals',
     icon: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 11c0-3.3 3.6-6 8-6s8 2.7 8 6"/><path d="M4 11v2c0 3.3 3.6 6 8 6s8-2.7 8-6v-2"/><ellipse cx="12" cy="11" rx="8" ry="3"/></svg>',
   },
-  {
-    id: 'sandwiches-toasts' as const,
+  'sandwiches-toasts': {
+    order: 6,
     label: 'Sandwiches',
     icon: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11h18"/><path d="M3 14h18"/><path d="M5 8c0-1.1 1-2 2-2h10c1 0 2 .9 2 2v3H5V8z"/><path d="M5 14v3c0 1.1 1 2 2 2h10c1 0 2-.9 2-2v-3"/></svg>',
   },
-  {
-    id: 'snacks-sides' as const,
+  'snacks-sides': {
+    order: 7,
     label: 'Snacks',
     icon: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h2l1 7h8l1-7h2"/><path d="M8 11v8a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-8"/><line x1="10" y1="7" x2="10" y2="11"/><line x1="14" y1="7" x2="14" y2="11"/></svg>',
   },
-];
-
-const subcategories = {
-  matcha: [
-    { id: 'all', label: 'All Matcha' },
-    { id: 'signature-series', label: 'Signature Series' },
-    { id: 'hojicha', label: 'Hojicha' },
-    { id: 'bobbi-icons', label: 'Bobbi Icons' },
-    { id: 'heritage-selection', label: 'Heritage Selection' },
-    { id: 'marukyu-series', label: 'Marukyu Koyamaen' },
-  ],
-  coffee: [
-    { id: 'all', label: 'All Coffee' },
-    { id: 'classics', label: 'The Classics' },
-    { id: 'coffee-signatures', label: 'Signatures' },
-    { id: 'milk-series', label: 'Milk Series' },
-    { id: 'caffeinated-frosts', label: 'Caffeinated Frosts' },
-    { id: 'cream-frosts', label: 'Cream Frosts' },
-  ],
-  pasta: [
-    { id: 'all', label: 'All Pasta' },
-    { id: 'creamy-pastas', label: 'Creamy Pastas' },
-    { id: 'tomato-pastas', label: 'Tomato-based Pastas' },
-    { id: 'baked-pastas', label: 'Baked Pastas' },
-  ],
-  pastries: [
-    { id: 'all', label: 'All Pastries' },
-    { id: 'croissants-danishes', label: 'Croissants & Danishes' },
-    { id: 'muffins-loaves', label: 'Muffins & Loaves' },
-    { id: 'cookies-bars', label: 'Cookies & Bars' },
-    { id: 'cakes-slices', label: 'Cakes & Slices' },
-  ],
-  'chicken-wings': [
-    { id: 'all', label: 'All Wings' },
-    { id: 'classic-wings', label: 'Classic Wings' },
-    { id: 'sauced-wings', label: 'Sauced Wings' },
-    { id: 'dry-rub-wings', label: 'Dry Rub Wings' },
-  ],
-  'rice-meals': [
-    { id: 'all', label: 'All Rice Meals' },
-    { id: 'silog-meals', label: 'Silog Meals' },
-    { id: 'bowls', label: 'Bowls' },
-    { id: 'grilled-mains', label: 'Grilled Mains' },
-  ],
-  'sandwiches-toasts': [
-    { id: 'all', label: 'All Sandwiches' },
-    { id: 'toasties', label: 'Toasties' },
-    { id: 'club-sandwiches', label: 'Club Sandwiches' },
-    { id: 'open-faced', label: 'Open-faced' },
-  ],
-  'snacks-sides': [
-    { id: 'all', label: 'All Snacks' },
-    { id: 'fries-chips', label: 'Fries & Chips' },
-    { id: 'dips-spreads', label: 'Dips & Spreads' },
-  ],
 };
 
-const selectedMain = ref<'matcha' | 'coffee' | 'pasta' | 'pastries' | 'chicken-wings' | 'rice-meals' | 'sandwiches-toasts' | 'snacks-sides'>('matcha');
+const genericCategoryIcon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>';
+
+function toTitleCase(id: string) {
+  return id.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+}
+
+const selectedMain = ref('');
 const selectedSub = ref('all');
 
 // Exclude sold-out items globally
@@ -256,28 +210,60 @@ const availableItems = computed(() =>
   allItems.value.filter(item => !item.soldOut)
 );
 
-// Only show main tabs that have at least one available item
-const visibleMainTabs = computed(() =>
-  mainTabs.filter(tab =>
-    availableItems.value.some(item => item.category === tab.id)
-  )
-);
+// Derive main tabs from actual data so new Sanity categories appear automatically.
+// Known categories keep their icon/label/order; unknowns get a generic icon and
+// are appended after the known ones in the order they first appear in the data.
+const mainTabs = computed(() => {
+  const seenCategories = new Set<string>();
+  const known: { id: string; label: string; icon: string; order: number }[] = [];
+  const unknown: { id: string; label: string; icon: string; order: number }[] = [];
+  let unknownOrder = 1000;
 
-// Only show subcategory chips that have at least one available item (always keep "All")
-const currentSubcategories = computed(() =>
-  subcategories[selectedMain.value].filter(sub => {
-    if (sub.id === 'all') return true;
-    return availableItems.value.some(
-      item => item.category === selectedMain.value && item.subcategory === sub.id
-    );
-  })
-);
+  for (const item of availableItems.value) {
+    if (seenCategories.has(item.category)) continue;
+    seenCategories.add(item.category);
+    const cfg = categoryConfig[item.category];
+    const tab = {
+      id: item.category,
+      label: cfg?.label ?? toTitleCase(item.category),
+      icon: cfg?.icon ?? genericCategoryIcon,
+      order: cfg?.order ?? unknownOrder++,
+    };
+    (cfg ? known : unknown).push(tab);
+  }
+
+  return [...known.sort((a, b) => a.order - b.order), ...unknown];
+});
+
+// Auto-select the first available tab whenever the tab list changes
+watch(mainTabs, (tabs) => {
+  if (tabs.length && !tabs.some(t => t.id === selectedMain.value)) {
+    selectedMain.value = tabs[0].id;
+  }
+}, { immediate: true });
+
+// Derive subcategory chips from items in the selected category.
+// subcategoryLabel from the item is used as the chip label, so whatever is set
+// in Sanity Studio appears here automatically. The "All" chip is always first.
+const currentSubcategories = computed(() => {
+  const seen = new Set<string>();
+  const chips: { id: string; label: string }[] = [
+    { id: 'all', label: `All ${categoryConfig[selectedMain.value]?.label ?? toTitleCase(selectedMain.value)}` },
+  ];
+  for (const item of availableItems.value) {
+    if (item.category !== selectedMain.value) continue;
+    if (seen.has(item.subcategory)) continue;
+    seen.add(item.subcategory);
+    chips.push({ id: item.subcategory, label: item.subcategoryLabel ?? toTitleCase(item.subcategory) });
+  }
+  return chips;
+});
 
 watch(selectedMain, () => {
   selectedSub.value = 'all';
 });
 
-function selectMain(id: 'matcha' | 'coffee' | 'pasta' | 'pastries' | 'chicken-wings' | 'rice-meals' | 'sandwiches-toasts' | 'snacks-sides') {
+function selectMain(id: string) {
   selectedMain.value = id;
 }
 
