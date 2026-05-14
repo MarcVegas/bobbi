@@ -191,7 +191,7 @@ const categoryConfig: Record<string, { label: string; icon: string; order: numbe
   },
   'snacks-sides': {
     order: 7,
-    label: 'Snacks',
+    label: 'Sides & Starters',
     icon: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h2l1 7h8l1-7h2"/><path d="M8 11v8a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-8"/><line x1="10" y1="7" x2="10" y2="11"/><line x1="14" y1="7" x2="14" y2="11"/></svg>',
   },
 };
