@@ -242,14 +242,22 @@ watch(mainTabs, (tabs) => {
   }
 }, { immediate: true });
 
+// Categories where the "All X" chip is intentionally hidden — items must be
+// browsed per subcategory instead.
+const NO_ALL_CHIP_CATEGORIES = new Set(['add-ons']);
+
 // Derive subcategory chips from items in the selected category.
 // subcategoryLabel from the item is used as the chip label, so whatever is set
-// in Sanity Studio appears here automatically. The "All" chip is always first.
+// in Sanity Studio appears here automatically. The "All" chip is omitted for
+// categories listed in NO_ALL_CHIP_CATEGORIES.
 const currentSubcategories = computed(() => {
   const seen = new Set<string>();
-  const chips: { id: string; label: string }[] = [
-    { id: 'all', label: `All ${categoryConfig[selectedMain.value]?.label ?? toTitleCase(selectedMain.value)}` },
-  ];
+  const chips: { id: string; label: string }[] = [];
+
+  if (!NO_ALL_CHIP_CATEGORIES.has(selectedMain.value)) {
+    chips.push({ id: 'all', label: `All ${categoryConfig[selectedMain.value]?.label ?? toTitleCase(selectedMain.value)}` });
+  }
+
   for (const item of availableItems.value) {
     if (item.category !== selectedMain.value) continue;
     if (seen.has(item.subcategory)) continue;
@@ -259,8 +267,14 @@ const currentSubcategories = computed(() => {
   return chips;
 });
 
-watch(selectedMain, () => {
-  selectedSub.value = 'all';
+watch(selectedMain, (category) => {
+  if (NO_ALL_CHIP_CATEGORIES.has(category)) {
+    // Auto-select the first subcategory so items are visible immediately
+    const firstSub = availableItems.value.find(item => item.category === category);
+    selectedSub.value = firstSub?.subcategory ?? 'all';
+  } else {
+    selectedSub.value = 'all';
+  }
 });
 
 function selectMain(id: string) {
