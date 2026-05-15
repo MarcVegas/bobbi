@@ -51,9 +51,7 @@
 
               <h2 class="lb-name">{{ item.name }}</h2>
 
-              <p class="lb-description">{{ item.description }}</p>
-
-              <!-- Prices -->
+              <!-- Prices shown before description so they're always immediately visible -->
               <div class="lb-prices">
                 <div
                   v-for="p in item.prices"
@@ -64,6 +62,8 @@
                   <span class="lb-price-amount">₱{{ p.price }}</span>
                 </div>
               </div>
+
+              <p class="lb-description">{{ item.description }}</p>
 
               <!-- Dismiss hint -->
               <p class="lb-hint">Tap outside or press <kbd>Esc</kbd> to close</p>
@@ -254,6 +254,7 @@ onUnmounted(() => {
   padding: 22px 22px 28px;
   overflow-y: auto;
   flex: 1 1 auto;
+  min-height: 0;
   -webkit-overflow-scrolling: touch;
 }
 
