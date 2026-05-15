@@ -144,10 +144,12 @@ onUnmounted(() => {
 
 @media (min-width: 640px) {
   .lb-card {
+    flex-direction: row;
     border-radius: 24px;
     margin: 0;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
     max-height: calc(100vh - 48px);
+    max-width: 720px;
   }
 }
 
@@ -190,13 +192,26 @@ onUnmounted(() => {
   background: white;
 }
 
+/* Mobile: full width, natural proportional height — no cropping */
 .lb-real-img {
-  display: block;
-  max-width: 100%;
-  width: auto;
+  width: 100%;
   height: auto;
-  max-height: 45vh;
-  margin: 0 auto;
+  display: block;
+}
+
+/* Desktop: fill the left column completely */
+@media (min-width: 640px) {
+  .lb-pic {
+    width: 45%;
+    flex-shrink: 0;
+    align-self: stretch;
+  }
+
+  .lb-real-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
 
 /* Placeholder still needs a fixed height since there's no image to set dimensions */
@@ -206,7 +221,8 @@ onUnmounted(() => {
 
 @media (min-width: 640px) {
   .lb-pic:not(:has(.lb-real-img)) {
-    height: 220px;
+    height: auto;
+    min-height: 220px;
   }
 }
 
