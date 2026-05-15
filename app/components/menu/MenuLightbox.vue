@@ -118,7 +118,6 @@ onUnmounted(() => {
   background: rgba(15, 30, 20, 0.55);
   backdrop-filter: blur(4px);
   padding: 0;
-  overflow-y: auto;
 }
 
 @media (min-width: 640px) {
@@ -138,6 +137,9 @@ onUnmounted(() => {
   overflow: hidden;
   box-shadow: 0 -8px 40px rgba(0, 0, 0, 0.2);
   margin-top: auto;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
 }
 
 @media (min-width: 640px) {
@@ -145,6 +147,7 @@ onUnmounted(() => {
     border-radius: 24px;
     margin: 0;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+    max-height: calc(100vh - 48px);
   }
 }
 
@@ -188,9 +191,12 @@ onUnmounted(() => {
 }
 
 .lb-real-img {
-  width: 100%;
-  height: auto;
   display: block;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  max-height: 45vh;
+  margin: 0 auto;
 }
 
 /* Placeholder still needs a fixed height since there's no image to set dimensions */
@@ -230,6 +236,9 @@ onUnmounted(() => {
 /* ── Body ──────────────────────────────────────────── */
 .lb-body {
   padding: 22px 22px 28px;
+  overflow-y: auto;
+  flex: 1 1 auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 @media (min-width: 640px) {

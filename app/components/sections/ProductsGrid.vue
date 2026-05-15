@@ -14,16 +14,18 @@
     <div class="sticky top-0 z-30 py-3 menu-nav-sticky">
       <div class="container-elegant">
         <!-- Main Tabs -->
-        <div class="flex justify-center gap-3 mb-3">
-          <button
-            v-for="tab in mainTabs"
-            :key="tab.id"
-            @click="selectMain(tab.id)"
-            :class="['main-tab', selectedMain === tab.id ? 'main-tab--active' : '']"
-          >
-            <span class="tab-icon" v-html="tab.icon" />
-            {{ tab.label }}
-          </button>
+        <div class="main-tabs-scroll">
+          <div class="main-tabs-inner">
+            <button
+              v-for="tab in mainTabs"
+              :key="tab.id"
+              @click="selectMain(tab.id)"
+              :class="['main-tab', selectedMain === tab.id ? 'main-tab--active' : '']"
+            >
+              <span class="tab-icon" v-html="tab.icon" />
+              {{ tab.label }}
+            </button>
+          </div>
         </div>
 
         <!-- Sub Chips -->
@@ -305,6 +307,25 @@ const filteredItems = computed(() => {
 }
 
 /* ── Main Tabs ──────────────────────────────────────── */
+.main-tabs-scroll {
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  margin-bottom: 12px;
+}
+
+.main-tabs-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.main-tabs-inner {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  width: max-content;
+  min-width: 100%;
+}
+
 .main-tab {
   display: inline-flex;
   align-items: center;
