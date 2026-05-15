@@ -33,7 +33,7 @@ import StatsBar from '~/components/sections/StatsBar.vue';
 import ProductsGrid from '~/components/sections/ProductsGrid.vue';
 
 // Get site URL from runtime config or use a fallback
-const siteUrl = 'https://bobbi-five.vercel.app/'; // Update with your actual domain
+const siteUrl = 'https://www.bobbi.cafe';
 const ogImageUrl = `${siteUrl}/images/og_image.jpg`;
 
 // SEO & OpenGraph
