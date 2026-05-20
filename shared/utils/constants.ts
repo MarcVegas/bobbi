@@ -56,7 +56,7 @@ export const CAFE_INFO = {
   phone: '0924-103-8474',
   email: '',
   hours: {
-    weekday: 'Monday - Sunday: 9:00 AM - 8:00 PM'
+    weekday: 'Monday - Sunday: 9:00 AM - 9:00 PM'
   },
   social: {
     //instagram: 'https://instagram.com/bobbicafe',
